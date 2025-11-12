@@ -1,0 +1,10 @@
+def miMenu():
+    print(" _______________________")
+    print("|        MENU           |")
+    print("|_______________________|")
+    print("|1: Agrear producto     |")
+    print("|2: Mostrar producto    |")
+    print("|3: Calcular estadística|")
+    print("|4: Salir               |")
+    print("|_______________________|")
+    print("")
