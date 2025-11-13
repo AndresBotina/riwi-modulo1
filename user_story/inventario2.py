@@ -22,7 +22,6 @@ while menu!=4:
         menu = int(input("¿Que quieres hacer?: "))
         print("")
         print("")
-        print("")
 
         #Uso un condicional para preguntar al ususario que quiere hacer.
         if menu ==1:
