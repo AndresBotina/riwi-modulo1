@@ -62,21 +62,22 @@ def Update(global_books):
     if not global_books:
         print("Aun no hay libros en el inventario.")
     else:
+        for i,book in enumerate(global_books):
+            print(f"{i+1}- Título: {book['title']}| Cantidad: {book['quantity']}| Precio: {book['price']}")
+        print("")
         print("Ingresa el numero del item a actualizar: ")
         item = int(input("Item: "))
         new_price =float(input("Ingresa el nuevo precio: "))
         
-        for i,book in enumerate(global_books):
-            print(f"{i+1}- Título: {book['title']}| Cantidad: {book['quantity']}| Precio: {book['price']}")
-        print("")
-    
     for i, books in enumerate(global_books):
+        i+=1
         if item ==i:
             books['price']=new_price
+            break
         else:
             print("Entro en false")
     for i,book in enumerate(global_books):
-            print(f"{i+1}- Título: {book['title']}| Cantidad: {book['quantity']}| Precio: {book['price']}")
+             print(f"{i+1}- Título: {book['title']}| Cantidad: {book['quantity']}| Precio: {book['price']}")
     
 
 
