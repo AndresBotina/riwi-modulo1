@@ -62,27 +62,29 @@
 
 import sys, os
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-from utils.functions import Add ,Menu,Consult,Update
+from utils.functions import AddS3,MenuS3,ConsultS3,UpdateS3,DeleteS3
 #Lista global
 global_books=[]
 
 while True:
-    Menu()
-    action=input("Que quieres hacer: ").lower()
-    print("")
+    MenuS3()
+    action=input("Elige una opción: ").lower()
+    print("___________________________________")
     if action=="1":
-        new_books =Add()
+        new_books =AddS3()
         global_books.extend(new_books)    
     elif action=="2":
-        print("-- -- Inventario -- --")
-        Consult(global_books)
+        print("      -- -- Inventario -- --")
+        ConsultS3(global_books)
     elif action=="3":
-        print("-- -- Inventario -- --")
-        Update(global_books)
+        print("      -- -- Inventario -- --")
+        UpdateS3(global_books)
     elif action=="4":
-        print("4 Funciona")
+        print("      -- -- Inventario -- --")
+        DeleteS3(global_books)
     elif action=="5":
         print("5 Funciona")
     elif action== "6" or action=="salir":
         print("¡Has salido!")
         break
+    else: print("___________________________________"),print(""),print("Entradas inválidas!")

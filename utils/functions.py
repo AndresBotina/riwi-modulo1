@@ -1,15 +1,16 @@
 
 def miMenu():
-    print(" _______________________")
-    print("|        MENU           |")
-    print("|_______________________|")
-    print("|1: Agrear producto     |")
-    print("|2: Mostrar producto    |")
-    print("|3: Calcular estadística|")
-    print("|4: Salir               |")
-    print("|_______________________|")
+    print("_______________________")
+    print("        MENU           ")
+    print("_______________________")
+    print("1: Agrear producto     ")
+    print("2: Mostrar producto    ")
+    print("3: Calcular estadística")
+    print("4: Salir               ")
+    print("_______________________")
     print("") 
-def Add():
+#Creacion de la función agregar libros al inventario
+def AddS3():
     c=0
     books=[]
     count_l=1
@@ -50,39 +51,89 @@ def Add():
     return books
 
 #Funcion para Consultar los libros disponibles--------------------------------------------------------------------
-def Consult(global_books):
+def ConsultS3(global_books):
     if not global_books:
         print("No hay libros disponibles")
     else:
         for book in global_books:
-            print(book)
+            print(f"| Título: {book['title']} | Cantidad: {book['quantity']} | Precio: {book['price']:.2f} |")
+
     
 #Funcion para actualizar el precio de un libro --------------------------------------------------------------------    
-def Update(global_books):
+def UpdateS3(global_books):
     if not global_books:
-        print("Aun no hay libros en el inventario.")
+        print("Aun no hay libros en el inventario")
     else:
         for i,book in enumerate(global_books):
-            print(f"{i+1}- Título: {book['title']}| Cantidad: {book['quantity']}| Precio: {book['price']}")
+            print(f"Item: {i+1}   | Título: {book['title']} | Cantidad: {book['quantity']} | Precio: {book['price']:.2f} |")
         print("")
         print("Ingresa el numero del item a actualizar: ")
-        item = int(input("Item: "))
-        new_price =float(input("Ingresa el nuevo precio: "))
+            
+        while True:
+            try:
+                item = int(input("Item: "))
+                if item >0 and item<=len(global_books):
+                    break
+                else:print("Ingresa un item válido")
+            except ValueError:
+                print("Ingresa un item válido")
+                
+            
+        while True:
+            try:
+                new_price =float(input("Ingresa el nuevo precio: "))
+                if new_price >=0:
+                    for i, books in enumerate(global_books):
+                        i+=1
+                        if item ==i:
+                            books['price']=new_price
+                            break
+                    break
+                else:
+                    print("No se permiten numeros negativos")
+            except ValueError:
+                print("Entradas inválidas, Intenta nuevamente")
+            
+    #Imrprime directamente (Sin solicitarlo) el invetario actualizado.
+        for i,book in enumerate(global_books):
+            print(f"{i+1}  |- Título: {book['title']} | Cantidad: {book['quantity']} | Precio: {book['price']:.2f} |")
         
-    for i, books in enumerate(global_books):
-        i+=1
-        if item ==i:
-            books['price']=new_price
-            break
-        else:
-            print("Entro en false")
-    for i,book in enumerate(global_books):
-             print(f"{i+1}- Título: {book['title']}| Cantidad: {book['quantity']}| Precio: {book['price']}")
-    
+
+
+
+
+def DeleteS3(global_books):
+    print("")
+    if not global_books:
+        print("Aun no hay libros en el inventario")
+    else:
+        print("Quitando libros:")
+        for i,book in enumerate(global_books):
+                print(f"{i+1}  |- Título: {book['title']} | Cantidad: {book['quantity']} | Precio: {book['price']:.2f} |")
+        remove_book = input("Que libro quieres remover? :")
+        global_books.remove(remove_book)   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #creamos un menú en una función ------------------------------------------------------------------------------
-def Menu():
+def MenuS3():
     print("___________________________________")
     print("_______________MENU________________")
     print("1: Añadir libros al inventario.")

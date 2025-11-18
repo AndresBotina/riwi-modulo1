@@ -58,7 +58,7 @@ while menu!=4:
             else:
                 print("LISTA DE PRODUCTOS:")
                 for producto in inventario:
-                    print(producto)
+                    print(f"| Name: {product_name} | Amount: {product_amount} | Price: {product_price } |")
             print("")
         elif menu==3:
             #Muestro la informacion de los productos creados.

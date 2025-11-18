@@ -13,3 +13,4 @@
 # del impares[:]  
 # nums = pares
 # print(pares)  
+

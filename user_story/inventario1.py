@@ -1,7 +1,13 @@
 #HISTORIA DE USUARIO 1
-
+import sys, os
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from utils.functions import miMenu
+#Mostramos el menú
+miMenu()
+#Solicitamos al usuario el nombre del producto 
 product =input("Nombre producto: ")
 #Agregamos un ciclo while para pedir al usuario multiples veces la información correcta, en caso de no hacerlo.
+
 while True:
     try:
         precio = int(input("Ingresa el precio: "))
