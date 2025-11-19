@@ -15,8 +15,6 @@ def AddS3():
     books=[]
     count_l=1
     while c <=5:
-
-        
         print(f"-Agregando libros ({count_l})")
         count_l+=1
         book_title=input("Ingresa el nombre del libro: ")
@@ -43,7 +41,8 @@ def AddS3():
         books.append(book)
         c+=1
         if c==5:    
-            respuesta =input("Deseas añadir un nuevo libro? s/n: ").lower()
+            print("Deseas añadir un nuevo libro?  ")
+            respuesta =input("Presione (S) para agregar o presione cualquier cosa para salir: ").lower()
             if respuesta =="s":
                 c-=1  
             else:
@@ -98,37 +97,45 @@ def UpdateS3(global_books):
         for i,book in enumerate(global_books):
             print(f"{i+1}  |- Título: {book['title']} | Cantidad: {book['quantity']} | Precio: {book['price']:.2f} |")
         
-
+        
 
 
 
 def DeleteS3(global_books):
-    print("")
+    
+    
     if not global_books:
         print("Aun no hay libros en el inventario")
     else:
-        print("Quitando libros:")
+        print("Item|        -- -- Inventario -- --")
         for i,book in enumerate(global_books):
-                print(f"{i+1}  |- Título: {book['title']} | Cantidad: {book['quantity']} | Precio: {book['price']:.2f} |")
-        remove_book = input("Que libro quieres remover? :")
-        global_books.remove(remove_book)   
+                print(f" {i+1}  | Título: {book['title']} | Cantidad: {book['quantity']} | Precio: {book['price']:.2f} |")
+        #Con While validamos que sea un numero válido
+        print("")
+        while True:
+            try:
+                
+                remove_book = int(input("Que libro quieres eliminar? (Elige un numero): "))
+                if remove_book >0 and remove_book<=len(global_books):
+                    break
+                else:print("Ingresa un item válido")
+            except ValueError:
+                print("Ingresa un item válido")
+        libro_verificado=global_books[remove_book-1]
+        if libro_verificado['quantity'] ==0 :
+            print(f"No existen unidades de: {libro_verificado['title'] }")
+            
+        else:
+            print(f"Aun existen unidades de {libro_verificado['title']}")
+            delete = input("Eliminar de todos modos? (S/-) :").lower()
+            if delete =="s":
+                global_books.pop(remove_book-1)
+                print(f"Eliminaste el libro: {libro_verificado['title']}")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        print("\n--- DEBUG: Contenido de global_books al salir de DeleteS3 ---")
+        for book in global_books:
+            print(f"DEBUG: {book['title']}")
+        print("----------------------------------------------------------\n")
 
 
 
