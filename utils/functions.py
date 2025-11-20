@@ -9,7 +9,8 @@ def miMenu():
     print("4: Salir               ")
     print("_______________________")
     print("") 
-#Creacion de la función agregar libros al inventario
+    
+#Creacion de la función agregar libros al inventario en S3
 def AddS3():
     c=0
     books=[]
@@ -49,7 +50,7 @@ def AddS3():
                 break
     return books
 
-#Funcion para Consultar los libros disponibles--------------------------------------------------------------------
+#Funcion para Consultar los libros disponibles en S3--------------------------------------------------------------------
 def ConsultS3(global_books):
     if not global_books:
         print("No hay libros disponibles")
@@ -58,7 +59,7 @@ def ConsultS3(global_books):
             print(f"| Título: {book['title']} | Cantidad: {book['quantity']} | Precio: {book['price']:.2f} |")
 
     
-#Funcion para actualizar el precio de un libro --------------------------------------------------------------------    
+#Funcion para actualizar el precio de un libro en S3 --------------------------------------------------------------------    
 def UpdateS3(global_books):
     if not global_books:
         print("Aun no hay libros en el inventario")
@@ -100,7 +101,7 @@ def UpdateS3(global_books):
         
 
 
-
+#Creo una función de borrado para S3
 def DeleteS3(global_books):
     
     
@@ -139,7 +140,7 @@ def DeleteS3(global_books):
 
 
 
-#creamos un menú en una función ------------------------------------------------------------------------------
+#creamos un menú en una función para S3 ------------------------------------------------------------------------------
 def MenuS3():
     print("___________________________________")
     print("_______________MENU________________")
