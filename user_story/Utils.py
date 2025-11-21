@@ -25,7 +25,10 @@ def agregar_productoHU3():
         while True:
             try:
                 cantidad_del_producto = int(input("Ingresa la cantidad: "))
-                break
+                if cantidad_del_producto>=0:
+                    break
+                else:
+                    print("**** Ingresa un numero positivo ****")
             except ValueError:
                 print("Dato inválido, ingresa la cantidad nuevamente")
         while True:
@@ -52,18 +55,33 @@ def agregar_productoHU3():
 #Creo una lista para mostrar los productos creados:
 
 def mostrar_productoHU3(inventario_globalHU3):
-    #product = input("INgrese ")
+    #product = input("Ingrese ")
     if not inventario_globalHU3:
-        print("No hay productos en el inventario")
+        print("No hay productos en el inventario!")
     else:
         for producto in inventario_globalHU3:
-            print(f"| Título: {producto['name_product']} | Cantidad: {producto['quantity']} | Precio: {producto['price']:.2f} |")
-
+            print(f"| Nombre: {producto['name_product']} | Cantidad: {producto['quantity']} | Precio: {producto['price']:.2f} |")
+#Esta función se encarga de buscar, en este caso, un producto, en la lista de productos
+#  
 def buscar_productoHU3(inventario_globalHU3):
-    print("")
-    buscar = input("Que producto quieres buscar: ")
-    for producto in inventario_globalHU3:
-        if buscar ==producto["name_product"]:
-            print(producto)
-            return
-    print("No encontrado")
+    if not inventario_globalHU3:
+        print("El inventario está vacío!")
+    else:
+        # for i,producto in enumerate(inventario_globalHU3):
+        #     print(f"Item: {i+1}   | Nombre: {producto['name_product']} | Cantidad: {producto['quantity']} | Precio: {producto['price']:.2f} |")# print("")
+        buscar = input("Que producto quieres buscar: ")
+        for producto in inventario_globalHU3:
+            if buscar ==producto["name_product"]:
+                print(f"{buscar} : ¡Encontrado!")
+                return
+        print(f"{buscar} no encontrado")
+
+#Esta funcion se encarga de actualizar un producto del inventario existente
+def actualizar_producto(inventario_globalHU3):
+    if not inventario_globalHU3:
+        print("No hay productos en el inventario!")
+    else:
+        for i,producto in enumerate(inventario_globalHU3):
+            print(f"Item: {i+1}   | Nombre: {producto['name_product']} | Cantidad: {producto['quantity']} | Precio: {producto['price']:.2f} |")
+        print("")
+        print("Ingresa el numero del item a actualizar: ")

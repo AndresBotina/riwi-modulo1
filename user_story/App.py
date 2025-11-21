@@ -112,7 +112,7 @@
 #         Se entrega el diagrama de flujo del sistema completo (PNG/PDF).
 
 #import csv
-from Utils import MenuHU3,agregar_productoHU3,mostrar_productoHU3,buscar_productoHU3
+from Utils import MenuHU3,agregar_productoHU3,mostrar_productoHU3,buscar_productoHU3,actualizar_producto
 
 inventario_globalHU3 = []
 
@@ -121,16 +121,19 @@ while True:
     action=input("Opción: ").lower()
     print("___________________________________")
     if action=="1":
-        print("*** Agregar Producto ***")
+        print("**** Agregar Producto ****")
         nuevo_producto=agregar_productoHU3()
         inventario_globalHU3.extend(nuevo_producto)
     elif action=="2":
-        print("********IInventaro*********")
+        print("       ******* Inventaro ********")
         mostrar_productoHU3(inventario_globalHU3)
     elif action=="3":
+        print("       ******* Inventaro ********")
         buscar_productoHU3(inventario_globalHU3)
     elif action=="4":
-        print("Void")
+        print("       ******* Inventaro ********")
+        actualizar_producto(inventario_globalHU3)
+
     elif action=="5":
         print("Void")
     elif action=="6":
